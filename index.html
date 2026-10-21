@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vode An — Клоны-коммандос, Кал Скирата и Приказ 66</title>
+<meta name="description" content="Фан-сайт о клонах-коммандос Республики, их учителе Кал Скирате и побеге при Приказе 66.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#06090f;
+    --bg2:#0b111c;
+    --panel:#0e1624;
+    --line:#1d2b40;
+    --text:#d7e3f4;
+    --muted:#7d8fa8;
+    --accent:#ff7a18;
+    --accent2:#ffb347;
+    --danger:#ff3b3b;
+    --cyan:#6fd3ff;
+    --gold:#ffd166;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Rajdhani',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.font-mil{font-family:'Orbitron',sans-serif;letter-spacing:.04em}
+  a{color:var(--accent2);text-decoration:none}
+  #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;display:block}
+  .nebula{
+    position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 75% 8%, rgba(255,90,20,.16), transparent 60%),
+      radial-gradient(50% 40% at 10% 25%, rgba(60,140,255,.12), transparent 60%),
+      radial-gradient(70% 60% at 50% 120%, rgba(255,60,60,.10), transparent 60%);
+    filter:blur(30px);
+  }
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;gap:22px;justify-content:center;
+    padding:14px 24px;background:rgba(6,9,15,.72);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,122,24,.15);
+    transition:transform .3s ease;
+  }
+  nav a{
+    color:var(--muted);font-weight:600;font-size:15px;letter-spacing:.08em;
+    text-transform:uppercase;transition:color .2s;position:relative;
+  }
+  nav a:hover{color:var(--text)}
+  nav a::after{
+    content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s;
+  }
+  nav a:hover::after{width:100%}
+  .nav-logo{font-family:'Orbitron';font-weight:900;color:var(--accent);font-size:18px;margin-right:auto;letter-spacing:.15em}
+  @media(max-width:820px){
+    nav{gap:12px;padding:10px 12px}
+    nav a{font-size:12px}
+    .nav-logo{font-size:14px}
+    nav a:nth-child(n+4){display:none}
+  }
+  /* ===== HERO ===== */
+  header{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:120px 24px 80px;position:relative;
+  }
+  .eyebrow{
+    color:var(--cyan);letter-spacing:.4em;text-transform:uppercase;font-size:13px;
+    font-weight:600;margin-bottom:18px;display:inline-block;
+    border:1px solid rgba(111,211,255,.35);padding:6px 16px;border-radius:2px;
+    background:rgba(111,211,255,.06);
+  }
+  header h1{
+    font-size:clamp(34px,6.5vw,78px);line-height:1.05;font-weight:900;
+    background:linear-gradient(180deg,#fff 0%,#ffd9b8 45%,var(--accent) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 60px rgba(255,122,24,.25);
+    margin-bottom:14px;max-width:1000px;
+  }
+  header .sub{
+    font-size:clamp(16px,2vw,21px);color:var(--muted);max-width:640px;margin:0 auto 34px;
+  }
+  header .sub b{color:var(--accent2);font-weight:600}
+  .hero-helmet{
+    width:min(340px,70vw);margin:0 auto 30px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35));
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:3px;
+    background:linear-gradient(135deg,var(--accent),#e85d00);color:#0a0a0a;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;font-size:14px;
+    box-shadow:0 8px 30px rgba(255,122,24,.35);transition:transform .2s,box-shadow .2s;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,122,24,.5)}
+  .scroll-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    color:var(--muted);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  /* ===== SECTIONS ===== */
+  section{padding:100px 24px;position:relative}
+  .wrap{max-width:1180px;margin:0 auto}
+  .sec-head{max-width:760px;margin-bottom:56px}
+  .sec-tag{
+    color:var(--accent);letter-spacing:.35em;text-transform:uppercase;
+    font-size:12px;font-weight:700;display:inline-block;margin-bottom:12px;
+  }
+  .sec-head h2{font-size:clamp(26px,4vw,44px);color:#fff;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:17px;max-width:640px}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  /* ===== TEACHER ===== */
+  .teacher{
+    display:grid;grid-template-columns:360px 1fr;gap:56px;align-items:center;
+  }
+  .portrait{
+    position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    background:linear-gradient(160deg,#101a2b,#070c14);padding:26px;
+    box-shadow:inset 0 0 60px rgba(255,122,24,.06);
+  }
+  .portrait svg{width:100%;height:auto;display:block}
+  .portrait .tag{
+    position:absolute;bottom:14px;left:16px;font-size:11px;letter-spacing:.2em;
+    color:var(--accent2);text-transform:uppercase;
+  }
+  .teacher-text h3{font-size:28px;color:#fff;margin-bottom:4px}
+  .teacher-text .alias{color:var(--gold);font-weight:600;letter-spacing:.1em;margin-bottom:18px;display:block}
+  .teacher-text p{color:var(--muted);font-size:16.5px;margin-bottom:14px}
+  .teacher-text p b{color:var(--text);font-weight:600}
+  blockquote{
+    border-left:3px solid var(--accent);padding:10px 0 10px 20px;margin:24px 0 0;
+    font-style:italic;color:#e9d9c8;font-size:18px;
+  }
+  blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--muted);letter-spacing:.1em}
+  @media(max-width:860px){.teacher{grid-template-columns:1fr;gap:34px}.portrait{max-width:340px}}
+  /* ===== ORDER 66 TIMELINE ===== */
+  .timeline{position:relative;margin-top:10px}
+  .timeline::before{
+    content:"";position:absolute;left:18px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(180deg,var(--danger),transparent);
+  }
+  .tl-item{position:relative;padding:0 0 34px 58px}
+  .tl-item::before{
+    content:"";position:absolute;left:11px;top:6px;width:16px;height:16px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--danger);box-shadow:0 0 14px rgba(255,59,59,.8);
+  }
+  .tl-item:last-child::before{border-color:var(--accent);box-shadow:0 0 14px rgba(255,122,24,.8)}
+  .tl-date{color:var(--danger);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase;margin-bottom:4px}
+  .tl-item h4{color:#fff;font-size:19px;margin-bottom:6px;font-family:'Rajdhani';font-weight:700}
+  .tl-item p{color:var(--muted);font-size:16px;max-width:720px}
+  /* ===== ESCAPE ===== */
+  .escape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .card{
+    background:linear-gradient(180deg,var(--panel),#0a1019);border:1px solid var(--line);
+    border-radius:5px;padding:24px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:rgba(255,122,24,.4)}
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6;
+  }
+  .card .num{font-family:'Orbitron';font-size:13px;color:var(--accent);letter-spacing:.2em;margin-bottom:10px}
+  .card h4{color:#fff;font-size:19px;margin-bottom:8px;font-weight:700}
+  .card p{color:var(--muted);font-size:15.5px}
+  @media(max-width:820px){.escape-grid{grid-template-columns:1fr}}
+  /* ===== SQUADS ===== */
+  .squads{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .squad{
+    background:linear-gradient(160deg,#0f1726,#080d15);border:1px solid var(--line);
+    border-radius:6px;padding:26px;transition:border-color .25s,box-shadow .25s;
+  }
+  .squad:hover{border-color:rgba(111,211,255,.35);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+  .squad-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .squad-badge{
+    width:46px;height:46px;border-radius:4px;display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(255,122,24,.2),rgba(111,211,255,.15));
+    border:1px solid var(--line);font-family:'Orbitron';font-weight:900;color:var(--accent2);font-size:16px;
+  }
+  .squad h3{color:#fff;font-size:21px;margin:0}
+  .squad .role{color:var(--cyan);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .squad p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+  .members{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:13px;padding:4px 10px;border-radius:20px;border:1px solid var(--line);
+    color:#cfe0f5;background:rgba(255,255,255,.03);
+  }
+  @media(max-width:820px){.squads{grid-template-columns:1fr}}
+  /* ===== BROTHERHOOD ===== */
+  .brotherhood{
+    text-align:center;background:
+      radial-gradient(60% 100% at 50% 0%, rgba(255,122,24,.10), transparent 70%),
+      linear-gradient(180deg,#0a1019,#06090f);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .brotherhood .big-quote{
+    font-family:'Orbitron';font-size:clamp(22px,4vw,40px);color:#fff;max-width:900px;margin:0 auto 18px;
+    line-height:1.3;text-shadow:0 0 40px rgba(255,122,24,.3);
+  }
+  .brotherhood .big-quote span{color:var(--accent)}
+  .brotherhood p{color:var(--muted);max-width:640px;margin:0 auto;font-size:17px}
+  .stats{display:flex;justify-content:center;gap:60px;margin-top:48px;flex-wrap:wrap}
+  .stat b{display:block;font-family:'Orbitron';font-size:38px;color:var(--accent2)}
+  .stat span{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  /* ===== FOOTER ===== */
+  footer{padding:46px 24px;text-align:center;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+  footer .disclaimer{max-width:760px;margin:0 auto 10px;opacity:.8}
+  footer .mando{color:var(--accent);font-family:'Orbitron';letter-spacing:.2em;font-size:12px}
+  /* noise */
+  .grain{position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="nebula"></div>
+<div class="grain"></div>
+
+<nav id="nav">
+  <span class="nav-logo">VODE AN</span>
+  <a href="#teacher">Учитель</a>
+  <a href="#order66">Приказ 66</a>
+  <a href="#escape">Побег</a>
+  <a href="#squads">Отряды</a>
+  <a href="#brotherhood">Братство</a>
+</nav>
+
+<header>
+  <span class="eyebrow">Star Wars · Republic Commando · Fan Project</span>
+  <div class="hero-helmet">
+    <!-- Стилизованный шлем клона-коммандос -->
+    <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="Шлем клона-коммандос">
+      <defs>
+        <linearGradient id="helmG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8eef7"/>
+          <stop offset="60%" stop-color="#9fb0c4"/>
+          <stop offset="100%" stop-color="#5c6d82"/>
+        </linearGradient>
+        <linearGradient id="visorG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ff9a3c"/>
+          <stop offset="50%" stop-color="#ff7a18"/>
+          <stop offset="100%" stop-color="#c94f00"/>
+        </linearGradient>
+        <radialGradient id="glowG" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,122,24,.5)"/>
+          <stop offset="100%" stop-color="rgba(255,122,24,0)"/>
+        </radialGradient>
+      </defs>
+      <circle cx="160" cy="150" r="130" fill="url(#glowG)"/>
+      <!-- купол -->
+      <path d="M160 38 C96 38 58 82 56 140 C54 190 74 232 104 258 L216 258 C246 232 266 190 264 140 C262 82 224 38 160 38 Z" fill="url(#helmG)"/>
+      <!-- тень купола -->
+      <path d="M160 38 C224 38 262 82 264 140 C266 190 246 232 216 258 L160 258 Z" fill="#000" opacity=".14"/>
+      <!-- визор T-образный -->
+      <path d="M74 132 L152 132 L152 152 L128 152 L128 214 L192 214 L192 152 L168 152 L168 132 L246 132 L246 168 C246 196 224 216 196 216 L124 216 C96 216 74 196 74 168 Z" fill="url(#visorG)"/>
+      <path d="M74 132 L152 132 L152 152 L128 152 L128 214 L192 214 L192 152 L168 152 L168 132 L246 132" fill="none" stroke="#2b1607" stroke-width="3" opacity=".7"/>
+      <!-- блики визора -->
+      <rect x="86" y="140" width="60" height="7" rx="3" fill="#ffd9b8" opacity=".55"/>
+      <rect x="174" y="140" width="40" height="7" rx="3" fill="#ffd9b8" opacity=".4"/>
+      <!-- респиратор -->
+      <path d="M126 236 L194 236 L188 258 L132 258 Z" fill="#3b4757"/>
+      <rect x="140" y="242" width="40" height="5" rx="2" fill="#111820"/>
+      <!-- антенна -->
+      <line x1="236" y1="74" x2="252" y2="34" stroke="#8fa3ba" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="253" cy="32" r="5" fill="#ff7a18"/>
+      <!-- полосы коммандос -->
+      <path d="M96 96 C112 88 132 86 148 90" stroke="#ff7a18" stroke-width="6" fill="none" opacity=".85"/>
+      <path d="M214 92 C228 98 238 108 244 120" stroke="#6fd3ff" stroke-width="5" fill="none" opacity=".7"/>
+      <!-- боковые вентиляционные панели -->
+      <rect x="52" y="168" width="12" height="34" rx="3" fill="#46566a"/>
+      <rect x="256" y="168" width="12" height="34" rx="3" fill="#46566a"/>
+    </svg>
+  </div>
+  <h1>РЕСПУБЛИКА ПАДЁТ.<br>БРАТЬЯ ОСТАНУТСЯ.</h1>
+  <p class="sub">История клонов-коммандос, их учителя <b>Кал Скираты</b> и дня, когда <b>Приказ 66</b> разделил галактику — но не братство.</p>
+  <a class="cta" href="#teacher">Читать историю ↓</a>
+  <span class="scroll-hint">Скролл вниз</span>
+</header>
+
+<section id="teacher">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">01 / Учитель</span>
+      <h2>Кал Скирата — тот, кто научил их быть не просто солдатами</h2>
+      <p>Мандалорский инструктор, чьи уроки пережили Республику. Для клонов он был не просто сержантом-наставником — он был отцом.</p>
+    </div>
+    <div class="teacher reveal">
+      <div class="portrait">
+        <!-- Мандалорский шлем (символ учителя) -->
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Мандалорский шлем">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5a6a7e"/><stop offset="55%" stop-color="#2c3949"/><stop offset="100%" stop-color="#161e27"/>
+            </linearGradient>
+            <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffcf9e"/><stop offset="100%" stop-color="#ff7a18"/>
+            </linearGradient>
+          </defs>
+          <path d="M150 30 C90 30 52 74 50 132 C48 186 66 228 90 254 L210 254 C234 228 252 186 250 132 C248 74 210 30 150 30 Z" fill="url(#mg)" stroke="#0a0f17" stroke-width="4"/>
+          <!-- визор -->
+          <path d="M70 120 L130 120 L130 140 L112 140 L112 196 L188 196 L188 140 L170 140 L170 120 L230 120 L230 160 C230 190 206 210 178 210 L122 210 C94 210 70 190 70 160 Z" fill="url(#vg)" stroke="#33190a" stroke-width="3"/>
+          <rect x="82" y="128" width="46" height="6" rx="3" fill="#ffe4c8" opacity=".6"/>
+          <!-- мандалорский ромб на лбу -->
+          <path d="M150 62 L164 84 L150 106 L136 84 Z" fill="#ff7a18" opacity=".9"/>
+          <!-- борода/респиратор -->
+          <rect x="120" y="214" width="60" height="6" rx="3" fill="#0a0f17" opacity=".8"/>
+          <rect x="132" y="226" width="36" height="5" rx="2" fill="#0a0f17" opacity=".6"/>
+        </svg>
+        <span class="tag">Кал'буир · Мандалор</span>
+      </div>
+      <div class="teacher-text">
+        <h3>Кал Скирата</h3>
+        <span class="alias">Инструктор клонов-коммандос · «Отец»</span>
+        <p>Мандалорец, наёмник и один из немногих, кто обучал клонов на Камино по-настоящему. Он учил их не только стрелять и выживать, но и <b>думать, выбирать и держаться друг за друга</b>.</p>
+        <p>Его «сыновьями» стали не только клоны-коммандос, но и <b>Null-ARCs</b> — элитные солдаты, которых он спас от участи пушечного мяса. Он дал им имена, язык и историю. Он дал им <b>семью</b>.</p>
+        <blockquote>«Ты солдат. Но прежде всего — ты человек. И это не отменить приказом.»<cite>— урок, который Кал Скирата дал каждому своему сыну</cite></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order66">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">02 / Приказ 66</span>
+      <h2>Один приказ. Полмиллиона выстрелов.</h2>
+      <p>Директива, зашитая в чипы клонов, превратила братьев в палачей. Но не всех.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">Фаза 1</div>
+        <h4>Чип для подавления личности</h4>
+        <p>Каждый клон с рождения носил биочип — «протокол 66» на случай предательства джедаев. Для обычных клонов это был приказ. Для тех, кого воспитывал Скирата, — вопрос выбора.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Фаза 2</div>
+        <h4>Камино. Приказ зачитан</h4>
+        <p>Приказ 66 прозвучал для всех соединений. Клоны-коммандос, обученные думать и действовать самостоятельно, встали перед выбором: подчиниться или спасти своих.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Фаза 3</div>
+        <h4>Молчание на каналах</h4>
+        <p>Часть коммандос выполнила приказ. Часть — отключила передатчики и исчезла. Отряды Delta и Omega в этой истории — не просто номера, а братья, у которых был выбор.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Фаза 4</div>
+        <h4>Сигнал для Скираты</h4>
+        <p>Кал Скирата знал: приказ придёт. Его сыновья-«нули» уже держали каналы связи. В день, когда Республика рухнула, он не потерял ни одного из тех, кого мог спасти.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="escape">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">03 / Побег</span>
+      <h2>Как отряды ушли из-под удара</h2>
+      <p>Сеть, которую Скирата строил годами, сработала за часы.</p>
+    </div>
+    <div class="escape-grid">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h4>Код «Семья»</h4>
+        <p>Условный сигнал, который знали только свои. Когда он прозвучал, коммандос уже были готовы: заранее спланированные маршруты, тайники и точки сбора.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h4>Забрать всех, кого можно</h4>
+        <p>Скирата не бросил никого, кто был рядом. Клоны вывозили раненых братьев, архивы и тех, кого ещё можно было спасти от участи имперского пушечного мяса.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h4>Дорога на Мандалор</h4>
+        <p>Убежище было выбрано не случайно: родная планета учителя, где братство значило больше, чем звание. Там клоны-коммандос могли снять шлемы и жить как люди.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">04</div>
+        <h4>Империя не забыла</h4>
+        <p>Беглецов искали. Скирата и его «сыновья» жили под чужими именами, меняли базы и держались вместе — потому что по отдельности их бы достали.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">05</div>
+        <h4>Братство важнее приказа</h4>
+        <p>Главный урок Камино и Мандалора: приказ можно отменить, а брата — нет. Это и стало их настоящей победой.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">06</div>
+        <h4>Новая жизнь</h4>
+        <p>Часть отрядов осела, часть продолжила войну — уже за себя. Но все они знали: если один из них подаст сигнал, остальные придут.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="squads">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">04 / Отряды</span>
+      <h2>Друзья, братья, коммандос</h2>
+      <p>Те, кто стоял плечом к плечу до и после Приказа 66.</p>
+    </div>
+    <div class="squads">
+      <div class="squad reveal">
+        <div class="squad-top">
+          <div class="squad-badge">Δ</div>
+          <div><h3>Delta Squad</h3><span class="role">Республиканские коммандос</span></div>
+        </div>
+        <p>Легендарный отряд, ставший лицом программы коммандос. Четверо братьев, каждый — специалист в своём деле, каждый — часть одного целого.</p>
+        <div class="members">
+          <span class="chip">Босс (RC-1138)</span>
+          <span class="chip">Фиксер (RC-1140)</span>
+          <span class="chip">Скорч (RC-1262)</span>
+          <span class="chip">Сев (RC-1207)</span>
+        </div>
+      </div>
+      <div class="squad reveal">
+        <div class="squad-top">
+          <div class="squad-badge">Ω</div>
+          <div><h3>Omega Squad</h3><span class="role">Коммандос «Чёрные шлемы»</span></div>
+        </div>
+        <p>Отряд, для которого братство было важнее регламента. Их история — про потери, верность и дорогу домой, к учителю.</p>
+        <div class="members">
+          <span class="chip">Найнер (RC-1309)</span>
+          <span class="chip">Дарман (RC-1136)</span>
+          <span class="chip">Атин (RC-3222)</span>
+          <span class="chip">Фи (RC-8015)</span>
+        </div>
+      </div>
+      <div class="squad reveal">
+        <div class="squad-top">
+          <div class="squad-badge">0x</div>
+          <div><h3>Null ARCs</h3><span class="role">Элита Кал Скираты</span></div>
+        </div>
+        <p>«Нули» — бойцы, которых Скирата вырвал из системы и воспитал как собственных сыновей. Им он доверял больше, чем кому-либо в галактике.</p>
+        <div class="members">
+          <span class="chip">Ордо</span>
+          <span class="chip">Джаинг</span>
+          <span class="chip">Мерил</span>
+          <span class="chip">А'ден</span>
+        </div>
+      </div>
+      <div class="squad reveal">
+        <div class="squad-top">
+          <div class="squad-badge">501</div>
+          <div><h3>501-й легион</h3><span class="role">Имперская эпоха</span></div>
+        </div>
+        <p>После Приказа 66 часть бойцов оказалась по другую сторону — но даже в имперских рядах оставались те, кто помнил, что такое братство.</p>
+        <div class="members">
+          <span class="chip">Штурмовики</span>
+          <span class="chip">Коммандос</span>
+          <span class="chip">Ветераны войн</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="brotherhood" class="brotherhood">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="big-quote">«Vode An» — <span>братья все</span>.</div>
+      <p>Их приказы отменяли, их номера стирали, их называли имуществом. Но братство, которое дал им учитель, оказалось сильнее Империи.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>66</b><span>приказ</span></div>
+      <div class="stat"><b>4</b><span>отряда коммандос</span></div>
+      <div class="stat"><b>1</b><span>учитель</span></div>
+      <div class="stat"><b>∞</b><span>братство</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="disclaimer">Это неофициальный фанатский проект. Star Wars, Clone Commandos, Republic Commando и связанные персонажи принадлежат Lucasfilm / Disney. Сайт создан из любви к истории клонов, без цели извлечения прибыли.</p>
+  <p class="mando">KANDOSII SA KA'ROTA, VODE AN</p>
+</footer>
+
+<script>
+/* ===== Звёздное поле ===== */
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+let scrollY = 0;
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  initStars();
+}
+function initStars(){
+  const count = Math.floor((canvas.width * canvas.height) / 9000);
+  stars = [];
+  for(let i=0;i<count;i++){
+    stars.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      z: Math.random()*1.2 + 0.2,
+      s: Math.random()*1.6 + 0.3,
+      tw: Math.random()*Math.PI*2,
+      hue: Math.random()
+    });
+  }
+}
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(const st of stars){
+    st.tw += 0.02;
+    const alpha = 0.35 + Math.sin(st.tw)*0.3;
+    ctx.beginPath();
+    ctx.fillStyle = st.hue > 0.92
+      ? `rgba(255,180,120,${alpha})`
+      : `rgba(200,225,255,${alpha})`;
+    ctx.arc(st.x, st.y + scrollY * st.z * 0.15, st.s, 0, Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(drawStars);
+}
+window.addEventListener('resize', resize);
+resize();
+drawStars();
+
+/* ===== Плавное появление секций ===== */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== Скрытие навигации при скролле вниз ===== */
+let lastY = 0;
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  scrollY = y;
+  if(y > lastY && y > 120){ nav.style.transform = 'translateY(-110%)'; }
+  else { nav.style.transform = 'translateY(0)'; }
+  lastY = y;
+});
+</script>
+</body>
+</html>
